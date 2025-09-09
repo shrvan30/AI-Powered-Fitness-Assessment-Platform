@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'select_assessment_page.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -397,7 +398,7 @@ class _DashboardPageState extends State<DashboardPage> with TickerProviderStateM
 
                     const SizedBox(height: 24),
 
-                    // Activity Heatmap
+                    // Activity Heatmap - UPDATED SECTION
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
@@ -408,35 +409,90 @@ class _DashboardPageState extends State<DashboardPage> with TickerProviderStateM
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            'Training Activity',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 12),
-                          SizedBox(
-                            height: 100,
-                            child: GridView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: heatmap.length,
-                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 5,
-                                crossAxisSpacing: 4,
-                                mainAxisSpacing: 4,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text(
+                                'Training Activity',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                              itemBuilder: (context, index) {
-                                return Container(
-                                  width: 16,
-                                  height: 16,
-                                  decoration: BoxDecoration(
-                                    color: getHeatmapColor(heatmap[index]),
-                                    borderRadius: BorderRadius.circular(4),
-                                  ),
+                              Text(
+                                'September 2025',
+                                style: TextStyle(
+                                  color: Colors.white.withOpacity(0.7),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 16),
+
+                          // Centered heatmap
+                          Center(
+                            child: LayoutBuilder(
+                              builder: (context, constraints) {
+                                // Calculate optimal size for squares based on available width
+                                final availableWidth = constraints.maxWidth - 32; // Account for padding
+                                final optimalColumns = (availableWidth / 25).floor().clamp(7, 10); // 7-10 columns
+                                final squareSize = (availableWidth / optimalColumns - 4).clamp(18.0, 28.0);
+
+                                return Wrap(
+                                  alignment: WrapAlignment.center,
+                                  spacing: 4,
+                                  runSpacing: 4,
+                                  children: heatmap.asMap().entries.map((entry) {
+                                    return Container(
+                                      width: squareSize,
+                                      height: squareSize,
+                                      decoration: BoxDecoration(
+                                        color: getHeatmapColor(entry.value),
+                                        borderRadius: BorderRadius.circular(4),
+                                      ),
+                                    );
+                                  }).toList(),
                                 );
                               },
+                            ),
+                          ),
+
+                          const SizedBox(height: 12),
+
+                          // Legend
+                          Center(
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  'Less',
+                                  style: TextStyle(
+                                    color: Colors.white.withOpacity(0.6),
+                                    fontSize: 12,
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                                ...List.generate(6, (index) => Container(
+                                  width: 12,
+                                  height: 12,
+                                  margin: const EdgeInsets.only(right: 2),
+                                  decoration: BoxDecoration(
+                                    color: getHeatmapColor(index),
+                                    borderRadius: BorderRadius.circular(2),
+                                  ),
+                                )),
+                                const SizedBox(width: 8),
+                                Text(
+                                  'More',
+                                  style: TextStyle(
+                                    color: Colors.white.withOpacity(0.6),
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
@@ -494,6 +550,10 @@ class _DashboardPageState extends State<DashboardPage> with TickerProviderStateM
                           child: ElevatedButton.icon(
                             onPressed: () {
                               // Navigate to start new assessment
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (_) => const SelectAssessmentPage()),
+                              );
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white,
@@ -515,8 +575,9 @@ class _DashboardPageState extends State<DashboardPage> with TickerProviderStateM
                         Expanded(
                           child: ElevatedButton.icon(
                             onPressed: () {
-                              // Navigate to progress tracking
+
                             },
+
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.transparent,
                               foregroundColor: Colors.white,
