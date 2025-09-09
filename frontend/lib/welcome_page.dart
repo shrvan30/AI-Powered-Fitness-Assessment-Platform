@@ -252,7 +252,7 @@ class _WelcomePageState extends State<WelcomePage>
                     ),
                   ),
                   child: const Text(
-                    "Get Started",
+                    "Login",
                     style: TextStyle(
                       fontSize: 16,  // Added explicit font size to match signup page buttons
                       fontWeight: FontWeight.bold,  // Added bold weight
@@ -279,7 +279,7 @@ class _WelcomePageState extends State<WelcomePage>
                     ),
                   ),
                   child: const Text(
-                    "Sign Up",
+                    "Create Account",
                     style: TextStyle(
                       fontSize: 16,  // Added explicit font size to match signup page buttons
                       fontWeight: FontWeight.bold,  // Added bold weight
