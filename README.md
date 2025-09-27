@@ -22,28 +22,26 @@ The `Test_Assessments` module contains the core ML and logic:
 
 ✅ This module ensures **accurate exercise detection, repetition counting, and real-time feedback** using ML logic.
 
-## 🏗️ Project Structure
-Test_assessments/
-├── main.py                  # Entry point of your application
-├── assessment_flow.py       # Handles the flow of fitness assessment
-├── exercises/               # Contains all exercise modules
+Test_Assessments/
+├── main.py                 # Entry point of the application
+├── assessment_flow.py      # Handles the overall fitness assessment workflow
+├── exercises/              # Exercise modules (all inherit from base_exercise.py)
 │   ├── __init__.py
-│   ├── base_exercise.py     # Base class for all exercises
-│   ├── squats.py            # Squats exercise logic
-│   ├── pushups.py           # Push-ups exercise logic
-│   ├── situps.py            # Sit-ups exercise logic
-│   ├── plank.py             # Plank exercise logic
-│   ├── vertical_jump.py     # Vertical jump exercise logic
-│   └── one_leg_stand.py     # One-leg stand exercise logic
-├── utils/                   # Utility modules
+│   ├── base_exercise.py    # Base class defining common exercise structure
+│   ├── squats.py           # Squats exercise logic
+│   ├── pushups.py          # Push-ups exercise logic
+│   ├── situps.py           # Sit-ups exercise logic
+│   ├── plank.py            # Plank exercise logic
+│   ├── vertical_jump.py    # Vertical jump exercise logic
+│   └── one_leg_stand.py    # One-leg stand exercise logic
+├── utils/                  # Utility modules for ML and assessment helpers
 │   ├── __init__.py
-│   ├── pose_utils.py        # Pose estimation helpers
-│   ├── angle_calculator.py  # Angle calculation logic (for joints)
-│   └── results_manager.py   # Save & manage assessment results
-└── config/                  # Configuration folder
+│   ├── pose_utils.py       # Pose estimation helpers
+│   ├── angle_calculator.py # Calculates joint angles for exercise evaluation
+│   └── results_manager.py  # Saves and manages assessment results
+└── config/                 # Configuration folder
     └── __init__.py
 
-    and the results are stored in fitness_assessment_result.csv
 
 
 ## ⚡ How It Works
