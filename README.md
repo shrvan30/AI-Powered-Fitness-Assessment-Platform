@@ -22,25 +22,9 @@ The `Test_Assessments` module contains the core ML and logic:
 
 ✅ This module ensures **accurate exercise detection, repetition counting, and real-time feedback** using ML logic.
 
-Test_Assessments/
-├── main.py                 # Entry point of the application
-├── assessment_flow.py      # Handles the overall fitness assessment workflow
-├── exercises/              # Exercise modules (all inherit from base_exercise.py)
-│   ├── __init__.py
-│   ├── base_exercise.py    # Base class defining common exercise structure
-│   ├── squats.py           # Squats exercise logic
-│   ├── pushups.py          # Push-ups exercise logic
-│   ├── situps.py           # Sit-ups exercise logic
-│   ├── plank.py            # Plank exercise logic
-│   ├── vertical_jump.py    # Vertical jump exercise logic
-│   └── one_leg_stand.py    # One-leg stand exercise logic
-├── utils/                  # Utility modules for ML and assessment helpers
-│   ├── __init__.py
-│   ├── pose_utils.py       # Pose estimation helpers
-│   ├── angle_calculator.py # Calculates joint angles for exercise evaluation
-│   └── results_manager.py  # Saves and manages assessment results
-└── config/                 # Configuration folder
-    └── __init__.py
+## 🏗️ Project Structure
+<img width="889" height="626" alt="image" src="https://github.com/user-attachments/assets/c3331cd6-fc1d-491e-a832-c9df8af23ac8" />
+
 
 
 
@@ -62,8 +46,5 @@ Test_Assessments/
 - Real-time feedback for proper exercise form
 - Modular, reusable ML workflow for multiple exercises
 
-## ⭐ Resume Highlights
-- Built **ML-based pose estimation and assessment system** for multiple exercises
-- Developed **real-time repetition and form evaluation logic**
-- Designed **modular exercise architecture** using OOP principles
+
 
